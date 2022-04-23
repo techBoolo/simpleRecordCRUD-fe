@@ -1,6 +1,18 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import * as recordAPI from '../../services/record.js'
 
+export const deleteRecord = createAsyncThunk(
+  'record/deleteRecord',
+  async(id, thunkAPI) => {
+    try {
+      await recordAPI.deleteRecord(id) 
+      return thunkAPI.dispatch(getRecords())
+    } catch (error) {
+      throw error
+    }
+  }
+)
+
 export const updateRecord = createAsyncThunk(
   'record/updateRecord',
   async(data, thunkAPI) => {
@@ -74,6 +86,17 @@ const recordSlice = createSlice({
         state.currentRecord = action.payload
       })
       .addCase(getRecord.rejected, (state) => {
+        state.loading = false
+      })
+    builder
+      .addCase(updateRecord.pending, (state) => {
+        state.loading = true
+      })
+      .addCase(updateRecord.fulfilled, (state, action) => {
+        state.loading = false
+        state.currentRecord = null 
+      })
+      .addCase(updateRecord.rejected, (state) => {
         state.loading = false
       })
   }

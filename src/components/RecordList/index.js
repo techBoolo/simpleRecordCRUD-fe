@@ -4,6 +4,7 @@ import { getRecord } from '../../redux/reducers/recordSlice.js'
 import RecordListHeader from './RecordListHeader.js'
 import RecordListActions from './RecordListActions.js'
 import EditDialog from '../EditRecord/EditDialog/'
+import DeleteDialog from '../DeleteRecord/DeleteDialog/'
 
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
@@ -11,15 +12,19 @@ import Typography from '@mui/material/Typography'
 
 const RecordList = (props) => {
   const [ openEdit, setOpenEdit ] = useState(false)
+  const [ openDelete, setOpenDelete ] = useState(false)
+  const [ currentRecordId, setCurrentRecordId ] = useState(null)
   const { records } = useSelector(state => state.record)
   const dispatch = useDispatch()
+
 
   const showEditDialog = (id) => {
     dispatch(getRecord(id)) 
     setOpenEdit(true)
   }
-  const showDeleteDialog = () => {
-
+  const showDeleteDialog = (id) => {
+    setCurrentRecordId(id)
+    setOpenDelete(true)
   }
 
   return (
@@ -35,11 +40,15 @@ const RecordList = (props) => {
             <Typography>{record.age}</Typography>
             <Typography>{record.gender}</Typography>
           </Box>
-          <RecordListActions showEditDialog={() => showEditDialog(record._id)} showDeleteDialog={showDeleteDialog} />
+          <RecordListActions 
+            showEditDialog={() => showEditDialog(record._id)} 
+            showDeleteDialog={() => showDeleteDialog(record._id)} 
+          />
         </Fragment>
       ))}
 
-      <EditDialog openEdit={openEdit} setOpenEdit={setOpenEdit}/>
+      <EditDialog openEdit={openEdit} setOpenEdit={setOpenEdit} />
+      <DeleteDialog openDelete={openDelete} setOpenDelete={setOpenDelete} id={currentRecordId} />
     </Box>
   );
 };

@@ -26,5 +26,6 @@ export const updateRecord = async (updateData) => {
 }
 
 export const deleteRecord = async (id) => {
-  return await axios.delete(`${backend_root_url}/records/${id}`)
+  const { data } =  await axios.delete(`${backend_root_url}/records/${id}`)
+  return data
 }
