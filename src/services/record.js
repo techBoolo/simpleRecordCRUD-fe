@@ -13,11 +13,16 @@ export const fetchRecords = async () => {
 }
 
 export const fetchRecord = async (id) => {
-  return await axios(`${backend_root_url}/records/${id}`)
+  const { data } = await axios(`${backend_root_url}/records/${id}`)
+  return data
 }
 
-export const updateRecord = async (id, data) => {
-  return await axios.patch(`${backend_root_url}/records/${id}`, data)
+export const updateRecord = async (updateData) => {
+  const { name, email, age, gender } = updateData
+  const id = updateData._id
+  const d = { name, email, age, gender }
+  const { data } =  await axios.patch(`${backend_root_url}/records/${id}`, d)
+  return data
 }
 
 export const deleteRecord = async (id) => {
