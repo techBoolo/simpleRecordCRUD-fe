@@ -11,7 +11,10 @@ const About = (props) => {
 
   return (
     <>
-      <Typography variant='h5' sx={{ textDecoration: 'underline', mb: 2 }}>Technologies used :</Typography>      
+      <Typography sx={{ mt: 2}}>Github repo:</Typography>
+      <Link href='https://github.com/techBoolo/simpleRecordCRUD-be' target='new'>Backend</Link> {' | '}
+      <Link href='https://github.com/techBoolo/simpleRecordCRUD-fe' target='new'>Frontend</Link>
+      <Typography variant='h5' sx={{ textDecoration: 'underline', my: 2 }}>Technologies used :</Typography>      
       <Box>
         <Typography variant='h6'>Backend</Typography>
         <List>

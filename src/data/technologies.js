@@ -12,8 +12,8 @@ export const technologies = {
     { name: 'MUI', web: 'https://mui.com' } 
   ],
   hosting: [
-    { name: 'Database', web: ''},
-    { name: 'Frontend', web: ''},
-    { name: 'Backend', web: ''}
+    { name: 'Database', web: 'https://www.clever-cloud.com'},
+    { name: 'Frontend', web: 'https://vercel.com'},
+    { name: 'Backend', web: 'https://heroku.com'}
   ]
 }

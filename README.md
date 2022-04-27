@@ -1,2 +1,2 @@
-# crud operation on simple records
+# simple records crud operation
 
