@@ -14,6 +14,7 @@ export const technologies = {
   hosting: [
     { name: 'Database', web: 'https://www.clever-cloud.com'},
     { name: 'Frontend', web: 'https://vercel.com'},
-    { name: 'Backend', web: 'https://heroku.com'}
+    { name: 'Backend', web: 'https://heroku.com'},
+    { name: 'Repository', web: 'https://github.com'}
   ]
 }
